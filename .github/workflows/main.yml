@@ -17,7 +17,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: lagstiftning/autoindex@v15
+      - uses: lagstiftning/autoindex@v16
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           law: ${{ github.event.repository.name }}
