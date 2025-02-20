@@ -1,0 +1,23 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: lagstiftning/autoindex@v20
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          law: ${{ github.event.repository.name }}
